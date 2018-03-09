@@ -21,12 +21,13 @@ ant_df <- rename(ant_nutrients, Na = X1) # Rename because it thinks it's NA
 ```
 
 ```{r}
-corrplot(cor(ant_df), method = "ellipse")
+# Pairwise correlations:
+corrplot(cor(ant_df), method = "ellipse") #darker blue = stronger positive correlations, darker red = stronger negative correlations
 # Other option:
-corrplot(cor(ant_df), type = "upper", method = "square")
+corrplot(cor(ant_df), type = "upper", method = "square") #size of square and color = strength of correlations
 
 
-# Perform PCA
+# Perform PCA (look at all variables in 2-D at same time)
 
 ant_pca <- prcomp(ant_df, scale = TRUE) # Note: all must be numeric (the country names are just labels), so we exclude column 1
 summary(ant_pca) # Within first two PCs, 63% of variance explained!
